@@ -17,7 +17,7 @@ function Header() {
               component="div"
               sx={{ flexGrow: 1, textAlign: "left" }}
             >
-              XOR Forms | xor | hemakshi
+              XOR Forms 
             </Typography>
             <AiOutlineMenu className="icon" />
           </Toolbar>
