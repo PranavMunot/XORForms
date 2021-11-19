@@ -15,7 +15,7 @@ function Footer() {
               component="div"
               sx={{ flexGrow: 1, textAlign: "left" }}
             >
-              &copy;All rights reserved with XOR FORMS 2021
+              &copy; All rights reserved with XOR FORMS 2021
             </Typography>
           </Toolbar>
         </AppBar>
