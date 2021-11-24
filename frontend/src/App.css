@@ -1,8 +1,12 @@
-.App {
-  text-align: center;
-}
 .app {
-  height: 80vh;
+  min-height: 80vh;
+  /* overflow: auto; */
+}
+.App {
+  overflow: hidden;
+}
+.link {
+  text-decoration: none;
 }
 
 .App-logo {

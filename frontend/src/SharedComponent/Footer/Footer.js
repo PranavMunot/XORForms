@@ -14,7 +14,7 @@ function Footer() {
             <Typography
               variant="body"
               component="div"
-              sx={{ flexGrow: 1, textAlign: "left", color:"white" }}
+              sx={{ flexGrow: 1, textAlign: "left", color: "white" }}
             >
               &copy; All rights reserved with XOR FORMS 2021
             </Typography>
