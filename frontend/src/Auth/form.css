@@ -1,0 +1,64 @@
+/* import {styled} from "styled-components"; */
+
+.loginLayout {
+  box-shadow: 0px 0px 1px 1px rgb(0 0 0 / 3%), 0px 0px 1px 1px rgb(0 0 0 / 6%),
+    0px 1px 1px 1px rgb(0 0 0 / 2%);
+}
+
+.signIn {
+  color: #12916f;
+}
+
+.signupLayout {
+  box-shadow: 0px 0px 1px 1px rgb(0 0 0 / 3%), 0px 0px 1px 1px rgb(0 0 0 / 6%),
+    0px 1px 1px 1px rgb(0 0 0 / 2%);
+}
+
+.signupp {
+  color: #12916f;
+}
+
+.pass-wrapper {
+  position: relative;
+  display: flex;
+  margin-bottom: 14px;
+}
+
+i {
+  position: absolute;
+  top: 38%;
+  right: 6%;
+  color: #12916f;
+}
+i:hover {
+  cursor: pointer;
+}
+/* .notchedOutline {
+    border-width: 1px;
+    border-color: rgb(61, 158, 116) !important;
+    color: rgb(61, 158, 116);
+  } */
+
+/* .btnclose{
+      position: absolute;
+      color: black;
+  } */
+/* export const Text = styled(TextField)
+  color: black;
+  width: 100%;
+  label.focused {
+    color: gray; 
+  }
+  .MuiOutlinedInput-root {
+    fieldset {
+      border-color: #bcbcbc; 
+    }
+    &:hover fieldset {
+      border-color:gray; 
+    }
+    &.Mui-focused fieldset {
+      border-color:gray;
+      font:gray; 
+    }
+  }
+; */

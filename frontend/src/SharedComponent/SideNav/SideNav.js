@@ -136,34 +136,26 @@ export default function PersistentDrawerRight() {
         </DrawerHeader>
         <Divider />
         <List>
-          {["Responses", "Starred"].map(
-            (text, index) =>
-              index % 2 === 0 ? (
-                <>
-                  <ListItem button onClick={changeRoute} key={text}>
-                    <ListItemIcon>
-                      <InboxIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItem>{" "}
-                </>
-              ) : (
-                <>
-                  <ListItem button key={text}>
-                    <ListItemIcon>
-                      <InboxIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItem>
-                </>
-              )
-
-            // <ListItem button onClick={changeRoute} key={text}>
-            //   <ListItemIcon>
-            //     {index % 2 === 0 ? <InboxIcon /> : <InboxIcon />}
-            //   </ListItemIcon>
-            //   <ListItemText primary={text} />
-            // </ListItem>
+          {["Responses", "Starred"].map((text, index) =>
+            index % 2 === 0 ? (
+              <>
+                <ListItem button onClick={changeRoute} key={text}>
+                  <ListItemIcon>
+                    <InboxIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>{" "}
+              </>
+            ) : (
+              <>
+                <ListItem button key={text}>
+                  <ListItemIcon>
+                    <InboxIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>
+              </>
+            )
           )}
         </List>
         <Divider />

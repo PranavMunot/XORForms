@@ -9,6 +9,8 @@ import { Provider } from "react-redux";
 import { Store } from "./Components/ReduxToolkit/Store";
 import ViewData from "./Components/View/ViewData";
 import Response from "./Components/Responses/Response";
+import Login from "./Auth/login";
+import Signup from "./Auth/SignUp";
 
 const ThemeColor = createTheme({
   palette: {
@@ -28,6 +30,7 @@ function App() {
             <Provider store={Store}>
               <Routes>
                 <Route path="/" element={<Form />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/preview" element={<ViewData />} />
                 <Route path="/response" element={<Response />} />
               </Routes>

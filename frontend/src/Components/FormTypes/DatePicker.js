@@ -23,7 +23,6 @@ function DatePicker({ id }) {
 
   return (
     <div>
-      <QuestionText id={id} questionText={state.question} />
       <FormControlLabel
         sx={{ marginTop: 2 }}
         control={<Switch checked={state.isRequired} onChange={handleSwitch} />}

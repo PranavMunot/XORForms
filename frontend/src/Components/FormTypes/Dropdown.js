@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import OptionText from "./OptionText";
 import { FormActions } from "../ReduxToolkit/FormSlice";
 
-const FormikCheckBox = ({ id }) => {
+function Dropdown({ id }) {
   const state = useSelector((state) =>
     state.form.find((item) => item.id === id)
   );
@@ -32,7 +32,6 @@ const FormikCheckBox = ({ id }) => {
         state.options.map((data, index) => {
           return (
             <FormControl fullWidth key={index} sx={{ flexDirection: "row" }}>
-              <Checkbox disabled />
               <OptionText id={id} data={data} index={index} />
               <IconButton
                 sx={{ color: "error.light" }}
@@ -56,6 +55,6 @@ const FormikCheckBox = ({ id }) => {
       </Button>
     </div>
   );
-};
+}
 
-export default FormikCheckBox;
+export default Dropdown;

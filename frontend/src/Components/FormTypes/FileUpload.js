@@ -18,7 +18,6 @@ function FileUpload({ id }) {
   };
   return (
     <div>
-      <QuestionText id={id} questionText={state.question} />
       <FormControlLabel
         control={<Switch checked={state.isRequired} onChange={handleSwitch} />}
         label="Required"

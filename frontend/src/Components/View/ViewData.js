@@ -26,9 +26,7 @@ const ViewData = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // dataValue.map((data) => {
     dispatch(ResponseActions.addData({ data: dataValue }));
-    // });
   };
 
   return (

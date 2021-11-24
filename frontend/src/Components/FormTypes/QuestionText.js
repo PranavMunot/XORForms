@@ -51,7 +51,7 @@ function QuestionText({ id, questionText }) {
         onChange={handleInputChange}
         onFocus={focusHandler}
         variant="filled"
-        sx={{ marginTop: 2 }}
+        // sx={{ marginTop: 2 }}
         helperText={isError ? state.errorText : null}
       />
     </>

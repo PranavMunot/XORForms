@@ -7,13 +7,17 @@ import {
   Radio,
   FormControl,
   RadioGroup,
+  InputLabel,
+  Select,
   Button,
+  MenuItem,
   Typography,
 } from "@mui/material";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { FormDataActions } from "../../ReduxToolkit/FormDataSlice";
 
 function ShowData({ data }) {
+  // const state = useSelector(state => state.formdata.)
   const dispatch = useDispatch();
 
   const renderInputType = (type, submitCheck) => {
@@ -101,7 +105,6 @@ function ShowData({ data }) {
       case "singleCorrect":
         return (
           <>
-            {console.log(type.options)}
             <FormControl component="fieldset">
               <RadioGroup aria-label="gender" name="radio-buttons-group">
                 {type.options.map((data, index) => {
@@ -139,7 +142,6 @@ function ShowData({ data }) {
             >
               Upload File
               <input type="file" hidden />
-              {/* TODO : HANDLECHANGE TO IMPLIMENT HERE */}
             </Button>
           </>
         );
@@ -159,6 +161,36 @@ function ShowData({ data }) {
                 );
               }}
             />
+          </>
+        );
+
+      case "dropdown":
+        return (
+          <>
+            <FormControl fullWidth sx={{ marginBottom: 2 }}>
+              <InputLabel id="dropdown_lable">Select Option</InputLabel>
+              <Select id="dropdown_lable" label="Select Option">
+                {type.options.map((data, index) => {
+                  return (
+                    <MenuItem
+                      key={index}
+                      onClick={(e) => {
+                        dispatch(
+                          FormDataActions.addUpdateRadioData({
+                            id: type.id,
+                            fieldName: type.question,
+                            data,
+                          })
+                        );
+                      }}
+                      value={data}
+                    >
+                      {data}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+            </FormControl>
           </>
         );
 

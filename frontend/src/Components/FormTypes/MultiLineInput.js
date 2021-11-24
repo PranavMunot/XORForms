@@ -17,7 +17,6 @@ function MultiLineInput({ id }) {
   return (
     <div>
       <FormGroup>
-        <QuestionText id={id} questionText={state.question} />
         <FormControlLabel
           control={
             <Switch checked={state.isRequired} onChange={handleSwitch} />

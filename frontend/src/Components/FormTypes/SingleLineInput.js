@@ -8,7 +8,7 @@ import FormikCheckBox from "./FormikCheckBox";
 import MultiLineInput from "./MultiLineInput";
 import DatePicker from "./DatePicker";
 import FileUpload from "./FileUpload";
-import QuestionText from "./QuestionText";
+import Dropdown from "./Dropdown";
 
 function SingleLineInput(props) {
   const state = useSelector((state) =>
@@ -24,8 +24,6 @@ function SingleLineInput(props) {
     return (
       <>
         <FormGroup>
-          <QuestionText id={props.id} questionText={state.question} />
-
           <FormControlLabel
             control={
               <Switch checked={state.isRequired} onClick={handleSwitch} />
@@ -52,6 +50,8 @@ function SingleLineInput(props) {
     return <DatePicker id={props.id} />;
   } else if (props.questionType === "fileUpload") {
     return <FileUpload id={props.id} />;
+  } else if (props.questionType === "dropdown") {
+    return <Dropdown id={props.id} />;
   }
 }
 
