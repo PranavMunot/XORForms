@@ -12,10 +12,17 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Modal from "react-modal";
 import Signup from "./SignUp";
 import "./form.css";
+import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { AuthenticateActions } from "../Components/ReduxToolkit/UserAuthenticate";
+import { useNavigate } from "react-router-dom";
+import { IoClose } from "react-icons/io5";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const paperStyle = {
     padding: 20,
     height: "max-content",
@@ -45,9 +52,11 @@ const Login = () => {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     if (values.Username && values.Password) {
       setValid(true);
+      dispatch(AuthenticateActions.login());
+      navigate("/");
       setValues({ Username: "", Password: "" });
     } else {
       setValid(false);
@@ -73,7 +82,15 @@ const Login = () => {
 
   return (
     <Grid>
-      <Paper class="loginLayout" elevation={10} style={paperStyle}>
+      <Paper
+        className="loginLayout"
+        elevation={10}
+        sx={{ position: "relative" }}
+        style={paperStyle}
+      >
+        {/* <span className="cross">
+          <IoClose />
+        </span> */}
         <Grid align="center">
           <Avatar style={avatarStyle}>
             <LockOutlinedIcon />

@@ -1,4 +1,12 @@
-import { Button, Card, Container, Divider, Typography } from "@mui/material";
+import {
+  Button,
+  Card,
+  Container,
+  Divider,
+  Typography,
+  Snackbar,
+  Alert,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -15,6 +23,7 @@ const ViewData = () => {
   const [Data, setData] = useState(state);
   const [dataValue, setDataValue] = useState(FormData);
   const [dataValueOption, setDataValueOption] = useState(FormDataOption);
+  const [snackBar, setSnackBar] = useState(false);
 
   useEffect(() => {
     setData(state);
@@ -26,7 +35,12 @@ const ViewData = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    setSnackBar(true);
     dispatch(ResponseActions.addData({ data: dataValue }));
+  };
+
+  const handleClose = () => {
+    setSnackBar(false);
   };
 
   return (
@@ -63,8 +77,20 @@ const ViewData = () => {
         </Card>
       </form>
       <Link className="link" to="/">
-        <Button variant="contained">Back</Button>
+        <Button sx={{ marginBottom: 2 }} variant="contained">
+          Back
+        </Button>
       </Link>
+      <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        open={snackBar}
+        autoHideDuration={6000}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+          Form Submitted Successful!
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };

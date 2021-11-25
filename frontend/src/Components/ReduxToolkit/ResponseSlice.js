@@ -9,7 +9,6 @@ const ResponseReducer = createSlice({
   reducers: {
     addData(state, action) {
       let { data } = action.payload;
-      //   [{},{}]
       state.push({
         id: uuidv1(),
         response: data.map((item) => item),

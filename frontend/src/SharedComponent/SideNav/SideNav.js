@@ -16,9 +16,11 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
-// import MailIcon from '@mui/icons-material/Mail';
+import Dashboard from "@mui/icons-material/Dashboard";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { AuthenticateActions } from "../../Components/ReduxToolkit/UserAuthenticate";
 
 const drawerWidth = 240;
 
@@ -62,12 +64,12 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: "flex-start",
 }));
 
-export default function PersistentDrawerRight() {
+function PersistentDrawerRight() {
+  const dispatch = useDispatch();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -81,9 +83,15 @@ export default function PersistentDrawerRight() {
 
   const navigate = useNavigate();
 
-  const changeRoute = () => {
+  const changeRoute = (route) => {
     setOpen(false);
-    navigate("/response");
+    navigate(route);
+  };
+
+  const logoutHandler = () => {
+    dispatch(AuthenticateActions.logout());
+    setOpen(false);
+    navigate("/");
   };
 
   return (
@@ -136,19 +144,31 @@ export default function PersistentDrawerRight() {
         </DrawerHeader>
         <Divider />
         <List>
-          {["Responses", "Starred"].map((text, index) =>
+          {["Dashboard", "Responses"].map((text, index) =>
             index % 2 === 0 ? (
               <>
-                <ListItem button onClick={changeRoute} key={text}>
+                <ListItem
+                  button
+                  onClick={() => {
+                    changeRoute("/dashboard");
+                  }}
+                  key={text}
+                >
                   <ListItemIcon>
-                    <InboxIcon />
+                    <Dashboard />
                   </ListItemIcon>
                   <ListItemText primary={text} />
-                </ListItem>{" "}
+                </ListItem>
               </>
             ) : (
               <>
-                <ListItem button key={text}>
+                <ListItem
+                  button
+                  onClick={() => {
+                    changeRoute("/response");
+                  }}
+                  key={text}
+                >
                   <ListItemIcon>
                     <InboxIcon />
                   </ListItemIcon>
@@ -160,16 +180,16 @@ export default function PersistentDrawerRight() {
         </List>
         <Divider />
         <List>
-          {["Logout ?"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <LogoutIcon /> : <LogoutIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ListItem onClick={logoutHandler} button>
+            <ListItemIcon>
+              <LogoutIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Logout"} />
+          </ListItem>
         </List>
       </Drawer>
     </Box>
   );
 }
+
+export default PersistentDrawerRight;

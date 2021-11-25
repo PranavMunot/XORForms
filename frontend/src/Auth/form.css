@@ -4,6 +4,15 @@
   box-shadow: 0px 0px 1px 1px rgb(0 0 0 / 3%), 0px 0px 1px 1px rgb(0 0 0 / 6%),
     0px 1px 1px 1px rgb(0 0 0 / 2%);
 }
+.cross {
+  font-size: 2rem;
+  position: absolute;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  top: 0;
+  transform: translate(1rem, -2rem);
+  /* color: crimson; */
+  right: 0;
+}
 
 .signIn {
   color: #12916f;

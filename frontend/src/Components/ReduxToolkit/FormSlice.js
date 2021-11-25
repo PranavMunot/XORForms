@@ -31,7 +31,7 @@ const FormReducer = createSlice({
       let currentValue = state.find((data) => data.id === id);
       currentValue.inputType = questionType;
       currentValue.isQuestionValid = false;
-      // currentValue.question = "";
+
       if (
         currentValue.inputType === "checkBox" ||
         currentValue.inputType === "singleCorrect" ||

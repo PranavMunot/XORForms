@@ -46,12 +46,11 @@ function QuestionText({ id, questionText }) {
         fullWidth
         value={value}
         error={isError}
-        placeholder="Type Your Question Here"
         onBlur={questionHandler}
         onChange={handleInputChange}
         onFocus={focusHandler}
-        variant="filled"
-        // sx={{ marginTop: 2 }}
+        variant="outlined"
+        label="Type Your Question Here"
         helperText={isError ? state.errorText : null}
       />
     </>

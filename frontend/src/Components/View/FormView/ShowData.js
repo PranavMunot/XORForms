@@ -17,7 +17,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { FormDataActions } from "../../ReduxToolkit/FormDataSlice";
 
 function ShowData({ data }) {
-  // const state = useSelector(state => state.formdata.)
   const dispatch = useDispatch();
 
   const renderInputType = (type, submitCheck) => {
@@ -39,7 +38,7 @@ function ShowData({ data }) {
             }}
             placeholder="Your Response"
             required={type.isRequired}
-            variant="standard"
+            variant="filled"
           />
         );
 
@@ -49,7 +48,9 @@ function ShowData({ data }) {
             fullWidth
             multiline
             required={type.isRequired}
+            sx={{ paddingBottom: 2 }}
             rows={4}
+            label="Your Response"
             onBlur={(e) => {
               dispatch(
                 FormDataActions.addUpdateSingleData({
@@ -59,10 +60,8 @@ function ShowData({ data }) {
                 })
               );
             }}
-            placeholder="Your Response"
-            sx={{ padding: 2 }}
             required={type.isRequired}
-            variant="standard"
+            variant="filled"
           />
         );
       case "checkBox":

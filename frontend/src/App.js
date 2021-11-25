@@ -4,11 +4,11 @@ import Footer from "./SharedComponent/Footer/Footer";
 import Header from "./SharedComponent/Header/Header";
 import Form from "./Components/Form/Form";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Provider } from "react-redux";
-import { Store } from "./Components/ReduxToolkit/Store";
 import ViewData from "./Components/View/ViewData";
 import Response from "./Components/Responses/Response";
 import Login from "./Auth/login";
+import { useSelector } from "react-redux";
+import Dashboard from "./SharedComponent/Dashboard/Dashboard";
 
 const ThemeColor = createTheme({
   palette: {
@@ -19,20 +19,30 @@ const ThemeColor = createTheme({
 });
 
 function App() {
+  const authenticate = useSelector((state) => state.auth);
+
   return (
     <div className="App">
       <ThemeProvider theme={ThemeColor}>
         <Router>
           <Header />
           <div className="app">
-            <Provider store={Store}>
+            {authenticate.isLoggedin ? (
               <Routes>
                 <Route path="/" element={<Form />} />
-                <Route path="/login" element={<Login />} />
+                <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/preview" element={<ViewData />} />
                 <Route path="/response" element={<Response />} />
               </Routes>
-            </Provider>
+            ) : (
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+
+                <Route path="*" element={<Login />} />
+                {/* <Route path="/preview" element={<ViewData />} /> */}
+                {/* <Route path="/response" element={<Response />} /> */}
+              </Routes>
+            )}
           </div>
           <Footer />
         </Router>
