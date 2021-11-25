@@ -7,6 +7,30 @@ function Response() {
   const response = useSelector((state) => state.response);
   const [data, setData] = useState(response);
 
+  const getDatainObject = (data) => {
+    let checkBoxData = {};
+    data.map((item) => {
+      item.response.map((resItem) => {
+        if (checkBoxData.hasOwnProperty(resItem.fieldName)) {
+          if (typeof resItem.data === "string") {
+            checkBoxData[resItem.fieldName].push(resItem.data);
+          } else {
+            resItem.data.filter((item) => item !== null);
+            let arraytoString = resItem.data.join(", ");
+            checkBoxData[resItem.fieldName].push(arraytoString);
+          }
+        } else {
+          if (typeof resItem.data === "string") {
+            checkBoxData[resItem.fieldName] = [resItem.data];
+          } else {
+            let arraytoString = resItem.data.join(", ");
+            checkBoxData[resItem.fieldName] = [arraytoString];
+          }
+        }
+      });
+    });
+  };
+
   useEffect(() => {
     setData(response);
   }, [response]);
@@ -29,7 +53,7 @@ function Response() {
                         <b>
                           {typeof resItem.data === "string"
                             ? resItem.data
-                            : resItem.data.join(", ")}
+                            : resItem.data.join(", ")}{" "}
                         </b>
                       </Typography>
                       <br />
@@ -51,6 +75,15 @@ function Response() {
           Back
         </Button>
       </Link>
+      {/* CODE FOR FIELDNAME */}
+      {!(data.length <= 0) &&
+        data.map((item) => {
+          item.response.map((resItem) => {
+            console.log(resItem.fieldName);
+          });
+        })}
+      {/* CODE FOR ACTUAL DATA */}
+      {!(data.length <= 0) && getDatainObject(data)}
     </Container>
   );
 }

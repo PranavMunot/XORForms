@@ -20,16 +20,22 @@ const FormDataReducer = createSlice({
       let currentValue = state.find((item) => item.id === id);
 
       if (currentValue) {
-        currentValue.data[index] = data;
+        currentValue.data.push(data);
       } else {
         state.push({ id, fieldName, data: [data] });
       }
     },
     removeCheckBoxData(state, action) {
-      let { id, index } = action.payload;
+      let { id, index, data } = action.payload;
       let currentValue = state.find((item) => item.id === id);
+      let changeIndex;
       if (currentValue) {
-        currentValue.data.splice(index, 1);
+        currentValue.data.map((item, ind) => {
+          if (item === data) {
+            changeIndex = ind;
+          }
+        });
+        currentValue.data.splice(changeIndex, 1);
       }
     },
     addUpdateRadioData(state, action) {

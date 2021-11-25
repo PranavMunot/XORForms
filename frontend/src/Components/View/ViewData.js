@@ -11,6 +11,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { ResponseActions } from "../ReduxToolkit/ResponseSlice";
+import { FormDataActions } from "../ReduxToolkit/FormDataSlice";
 import ShowData from "./FormView/ShowData";
 
 const ViewData = () => {
@@ -37,6 +38,7 @@ const ViewData = () => {
     e.preventDefault();
     setSnackBar(true);
     dispatch(ResponseActions.addData({ data: dataValue }));
+    dispatch(FormDataActions.removeAllData());
   };
 
   const handleClose = () => {

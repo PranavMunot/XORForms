@@ -88,6 +88,7 @@ function ShowData({ data }) {
                               FormDataActions.removeCheckBoxData({
                                 id: type.id,
                                 index,
+                                data,
                               })
                             );
                           }
