@@ -21,7 +21,7 @@ function Dashboard() {
     if (!auth.isLoggedin) {
       navigate("login");
     } else {
-      navigate("form");
+      navigate("/");
     }
   };
 

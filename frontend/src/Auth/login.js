@@ -88,9 +88,6 @@ const Login = () => {
         sx={{ position: "relative" }}
         style={paperStyle}
       >
-        {/* <span className="cross">
-          <IoClose />
-        </span> */}
         <Grid align="center">
           <Avatar style={avatarStyle}>
             <LockOutlinedIcon />

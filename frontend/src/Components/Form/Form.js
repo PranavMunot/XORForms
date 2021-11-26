@@ -15,8 +15,8 @@ function Form() {
   const dispatch = useDispatch();
 
   const [titleState, setTitleState] = useState({
-    titleHead: "",
-    titleDesc: "",
+    titleHead: "Form Title",
+    titleDesc: "Form Description",
   });
 
   useEffect(() => {

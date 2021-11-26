@@ -64,17 +64,6 @@ const Signup = (props) => {
     }
   }, [values.PhoneNumber]);
 
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
   const [submitted, setSubmitted] = useState(false);
   const [valid, setValid] = useState(false);
 

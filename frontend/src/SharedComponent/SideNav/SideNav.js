@@ -19,7 +19,7 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import Dashboard from "@mui/icons-material/Dashboard";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AuthenticateActions } from "../../Components/ReduxToolkit/UserAuthenticate";
 
 const drawerWidth = 240;
@@ -69,6 +69,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 function PersistentDrawerRight() {
+  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -152,7 +153,7 @@ function PersistentDrawerRight() {
                   onClick={() => {
                     changeRoute("/dashboard");
                   }}
-                  key={text}
+                  key={index}
                 >
                   <ListItemIcon>
                     <Dashboard />
@@ -167,7 +168,7 @@ function PersistentDrawerRight() {
                   onClick={() => {
                     changeRoute("/response");
                   }}
-                  key={text}
+                  key={index}
                 >
                   <ListItemIcon>
                     <InboxIcon />
@@ -179,14 +180,16 @@ function PersistentDrawerRight() {
           )}
         </List>
         <Divider />
-        <List>
-          <ListItem onClick={logoutHandler} button>
-            <ListItemIcon>
-              <LogoutIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Logout"} />
-          </ListItem>
-        </List>
+        {auth.isLoggedin && (
+          <List>
+            <ListItem onClick={logoutHandler} button>
+              <ListItemIcon>
+                <LogoutIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Logout"} />
+            </ListItem>
+          </List>
+        )}
       </Drawer>
     </Box>
   );
